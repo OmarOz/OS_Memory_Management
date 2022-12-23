@@ -116,15 +116,14 @@ public class policy {
 
     public void worstFit(){
 
-        //sort "partitionVector" in descending order to get the biggest sizes first
-        Collections.sort(this.partitionsVector, new Comparator<partitions>() {
-            public int compare(partitions p1, partitions p2) {
-                return Integer.valueOf(p2.partitionSize).compareTo(p1.partitionSize);
-            }
-        });
-
         //nested for loop of "vector of process" and "vector of partitions"
         for(process pro: processVector) {
+            //sort "partitionVector" in descending order to get the biggest sizes first
+            Collections.sort(this.partitionsVector, new Comparator<partitions>() {
+                public int compare(partitions p1, partitions p2) {
+                    return Integer.valueOf(p2.partitionSize).compareTo(p1.partitionSize);
+                }
+            });
             int sub=0;
             boolean flag=false;
             for (int i=0;i<partitionsVector.size();i++) {
@@ -152,15 +151,17 @@ public class policy {
 
     public void bestFit(){
 
-        //sort "partitionVector" in ascending order to get the smallest sizes first
-        Collections.sort(this.partitionsVector, new Comparator<partitions>() {
-            public int compare(partitions p1, partitions p2) {
-                return Integer.valueOf(p1.partitionSize).compareTo(p2.partitionSize);
-            }
-        });
+
 
         //nested for loop of "vector of process" and "vector of partitions"
         for(process pro: processVector) {
+            //sort "partitionVector" in ascending order to get the smallest sizes first
+            Collections.sort(this.partitionsVector, new Comparator<partitions>() {
+                public int compare(partitions p1, partitions p2) {
+                    return Integer.valueOf(p1.partitionSize).compareTo(p2.partitionSize);
+                }
+            });
+
             int sub=0;
             boolean flag=false;
             for (int i=0;i<partitionsVector.size();i++) {
